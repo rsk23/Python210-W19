@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 # -------------------------------------------- #
-# Title: Lesson 03 Exercise: List Lab
-# Desc: This is a lab where we will learn about list manipulation
+# Title: Lesson 03 Exercise: String formatting lab
+# Desc: This is a lab where we will learn about string formatting in Python
 # Change log: (who, when, what)
 # RKesterson, 2019-01-28, Created file
 # RKestesron, 2019-01-28, Stubbed out methods / parts
@@ -11,7 +11,7 @@
 # RKesterson, 2019-01-28, Completed task three
 # RKesterson, 2019-01-28, Completed task four
 # RKesterson, 2019-01-28, Completed task five
-# RKesterson, 2019-01-28, Completed task six
+# RKesterson, 2019-01-28, Started task six
 # ---------------------------------------------- #
 
 # Task one
@@ -72,3 +72,4 @@ print(f"The weight of an {firstFruit.upper()} is {firstWeight * 1.2} and the wei
 # The weight of an orange is 1.3 and the weight of a lemon is 1.1
 
 # Task six
+# Will return
