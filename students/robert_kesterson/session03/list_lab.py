@@ -40,7 +40,7 @@ for fruit in listSeriesOne:
     response = input("Do you like " + fruit.lower() + " ? (yes / no) ")
     if response == "no":
         listSeriesOne.remove(fruit)
-    while response != 'yes' and response != "no":
+    while response != "yes" and response != "no":
         response = input("Answer must be \"yes\" or \"no\". Do you like " + fruit.lower() + " ? (yes / no) ")
 print(listSeriesOne)
 
