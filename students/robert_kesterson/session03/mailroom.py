@@ -57,7 +57,36 @@ def send_thank_you():
             break
 
 def create_a_report():
-    print("hello")
+    i = 1
+    reportlist = []
+    currentname = ""
+    totalgiven = 0
+    numberofgifts = 0
+    donationlist.sort()
+    # If the currentname is the empty set, we have not started to iterate yet
+    for tupleobject in donationlist:
+        if currentname == "":
+            currentname = tupleobject[0]
+            totalgiven = tupleobject[1]
+            numberofgifts = 1
+        # If we encounter a different name from the current name, we know we have reached a new donor
+        elif currentname != tupleobject[0]:
+            reporttuple = (totalgiven, currentname, numberofgifts)
+            reportlist.append(reporttuple)
+            currentname = tupleobject[0]
+            totalgiven = tupleobject[1]
+            numberofgifts = 1
+        # If we encounter the same name, we want to add to the information about said donor
+        else:
+            totalgiven += tupleobject[1]
+            numberofgifts += 1
+
+    # Now that the tuples are totaled, we can sort and print them
+    reportlist.sort()
+    reportlist.reverse()
+    for tupleobject in reportlist:
+        print("{:s} {:d} {:d}")
+
 
 if __name__ == '__main__':
     load_donation_list()
