@@ -12,6 +12,7 @@
 # ---------------------------------------------- #
 
 # Dictionaries
+'''
 dictOne = {
     'name': 'Chris',
     'city': 'Seattle',
@@ -35,6 +36,25 @@ dictTwo = {}
 for i in dictOne:
     dictTwo[i] = dictOne[i].lower().count('t')
 
-# Sets
 
+# Sets
+s2 = set([2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
+s3 = set([3, 6, 9, 12, 15, 18])
+s4 = set([4, 8, 12, 16, 20])
+
+print("s2:")
+for i in s2:
+    print("{:d}".format(i))
+
+print("s3:")
+for i in s3:
+    print("{:d}".format(i))
+
+print("s4:")
+for i in s4:
+    print("{:d}".format(i))
+
+print(s3 < s2)
+print(s4 < s2)
+'''
 # Sets 2
