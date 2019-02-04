@@ -31,7 +31,9 @@ print('cake' in dictOne)
 print('Mango' in dictOne.values())
 
 # Dictionaries 2
-
+dictTwo = {}
+for i in dictOne:
+    dictTwo[i] = dictOne[i].lower().count('t')
 
 # Sets
 
