@@ -12,7 +12,6 @@
 # ---------------------------------------------- #
 
 # Dictionaries
-'''
 dictOne = {
     'name': 'Chris',
     'city': 'Seattle',
@@ -36,7 +35,6 @@ dictTwo = {}
 for i in dictOne:
     dictTwo[i] = dictOne[i].lower().count('t')
 
-
 # Sets
 s2 = set([2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
 s3 = set([3, 6, 9, 12, 15, 18])
@@ -56,5 +54,11 @@ for i in s4:
 
 print(s3 < s2)
 print(s4 < s2)
-'''
+
 # Sets 2
+pyset = set(["p", "y", "t", "h", "o", "n"])
+pyset.add("i")
+froz = frozenset(["m", "a", "r", "t", "h", "o", "n"])
+
+print(pyset.union(froz))
+print(pyset.intersection(froz))
