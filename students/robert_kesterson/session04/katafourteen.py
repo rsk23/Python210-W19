@@ -73,7 +73,6 @@ def build_trigram_dict(words):
 def build_text(word_pairs):
     maxlength = 500
     counter = 0
-    # new_text = ""
     keylist = []
     for i in word_pairs.keys():
         keylist.append(i)
