@@ -7,7 +7,6 @@
 # RKesterson, 2019-01-30, Created file
 # RKestesron, 2019-02-05, Stubbed out methods / parts
 # RKestesron, 2019-02-05, Updated code to use a dict to switch between the user’s selections
-
 # RKestesron, 2019-02-05, Converted main donor data structure to be a dict
 # RKestesron, 2019-02-05, Updated code to produce the letter as one big template, rather than building up a
 # big string that produces the letter in parts
@@ -17,51 +16,38 @@
 # Note - Commit to FebUpdates branch when creating pull request this week
 # ---------------------------------------------- #
 
-donationlist = []
+donationdict = {}
 
-def load_donation_list():
-    global donationlist
-    firstdonation = ("Winston Churchill", 2)
-    donationlist.append(firstdonation)
-    firstdonation = ("Winston Churchill", 20)
-    donationlist.append(firstdonation)
-    firstdonation = ("Hunter S. Thompson", 50)
-    donationlist.append(firstdonation)
-    firstdonation = ("Hunter S. Thompson", 500)
-    donationlist.append(firstdonation)
-    firstdonation = ("Hunter S. Thompson", 5000)
-    donationlist.append(firstdonation)
-    firstdonation = ("Richard Garfield", 300)
-    donationlist.append(firstdonation)
-    firstdonation = ("Richard Garfield", 400)
-    donationlist.append(firstdonation)
-    firstdonation = ("Simon Illyan", 100)
-    donationlist.append(firstdonation)
-    firstdonation = ("Theodore Roosevelt", 50)
-    donationlist.append(firstdonation)
-    firstdonation = ("Theodore Roosevelt", 100)
-    donationlist.append(firstdonation)
+def load_donation_dict():
+    global donationdict
+    donationdict = {
+        'Winston Churchill': [20, 50],
+        'Hunter S. Thompson': [50, 500, 5000],
+        'Richard Garfield': [300, 400],
+        'Simon Illyan': [100],
+        'Theodore Roosevelt': [50, 100]
+    }
 
 def send_thank_you():
-    global donationlist
+    global donationdict
     tyresponse = input("Please enter a full name. list provides all names")
     while True:
         if tyresponse == "list":
-            donationlist.sort()
-            namelist = ""
-            for tupleobject in donationlist:
-                if tupleobject[0] not in namelist and namelist == "":
-                    namelist = namelist + "{:s}".format(tupleobject[0])
-                elif tupleobject[0] not in namelist:
-                    namelist = namelist + ",{:s}".format(tupleobject[0])
-            print(namelist)
+            for i in donationdict.keys():
+                print("{:s}".format(i))
             tyresponse = input("Please enter a full name. List provides all names")
         else:
             donation = input("Enter a donation amount")
             donation = int(donation)
-            newdonation = (tyresponse, donation)
-            print("Thank you {:s} for your generous donation of {:d} dollars".format(newdonation[0], newdonation[1]))
-            donationlist.append(newdonation)
+            if tyresponse in donationdict.keys():
+                donvalue = donationdict[tyresponse]
+                donvalue.append(donation)
+                donationdict[tyresponse] = donvalue
+            else:
+                donvalue = []
+                donvalue.append(donation)
+                donationdict[tyresponse] = donvalue
+            print("Thank you {:s} for your generous donation of {:d} dollars".format(tyresponse, donation))
             break
 
 def create_a_report():
@@ -99,7 +85,18 @@ def break_function():
     exit()
 
 def send_letters_to_all_donors():
-    return
+    global donationdict
+    for i in donationdict.keys():
+        filename = "{:s}.txt".format(i)
+        outfile = open(filename, 'w')
+        donationtotal = 0
+        donationvalue = donationdict[i]
+        for j in donationvalue:
+            donationtotal += int(j)
+        messagestring = "Dear {:s}, \r\n\n    Thank you for your very kind donation of ${:d}.\r\n\n    It will be put" \
+                        " to very good use.\r\n\n            Sincerely,\r\n                -The Team".format(i, donationtotal)
+        outfile.write(messagestring)
+        outfile.close()
 
 def load_selection_list():
     switch_function_dict = {
@@ -112,20 +109,17 @@ def load_selection_list():
 
 if __name__ == '__main__':
     switch_function_dict = load_selection_list()
-    # switch_function_dict = load_donation_list()
-    # response = input("Choose an action: Send a Thank You, Create a Report, quit")
+    load_donation_dict()
 
     while True:
         print("Chose an action: \r\n")
         for i in switch_function_dict.keys():
             print("{:s}".format(i))
         response = input("")
-        # response = int(response)
         if response not in switch_function_dict.keys():
             print("You must chose an action from the approved list. Actions are: \r\n")
             for i in switch_function_dict.keys():
                 print("{:s}".format(i))
             response = input("")
         else:
-            # switch_function_dict[response]
             switch_function_dict.get(response)()
