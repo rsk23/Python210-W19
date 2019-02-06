@@ -12,7 +12,7 @@
 # big string that produces the letter in parts
 # RKestesron, 2019-02-05, Added "send letters to all donors" feature
 # RKestesron, 2019-02-05, Updated "send letter to all donors" feature to write to files in working dir
-
+# RKestesron, 2019-02-05, Updated "create a report" feature to work correctly
 # Note - Commit to FebUpdates branch when creating pull request this week
 # ---------------------------------------------- #
 
@@ -50,7 +50,28 @@ def send_thank_you():
             print("Thank you {:s} for your generous donation of {:d} dollars".format(tyresponse, donation))
             break
 
+def sort_key(donor):
+    return donor[1]
+
 def create_a_report():
+    donationlist = []
+    for i in donationdict.keys():
+        donationcount = 0
+        donationtotal = 0
+        donationvalue = donationdict[i]
+        for j in donationvalue:
+            donationtotal += int(j)
+            donationcount += 1
+        averagedonation = donationtotal / donationcount
+        tupleone = (i, donationtotal, donationcount, averagedonation)
+        donationlist.append(tupleone)
+    sorteddonorlist = sorted(donationlist, key=sort_key)
+    sorteddonorlist.reverse()
+    print("Donor Name | Total Given | Num Gifts | Average Gift")
+    print("---------------------------------------------------")
+    for k in sorteddonorlist:
+        print("{:s} ${:d} {:d} ${:.2f}".format(k[0], k[1], k[2], k[3]))
+    '''
     i = 1
     reportlist = []
     currentname = ""
@@ -80,6 +101,7 @@ def create_a_report():
     reportlist.reverse()
     for tupleobject in reportlist:
         print("{:s} {:d} {:d}")
+    '''
 
 def break_function():
     exit()
