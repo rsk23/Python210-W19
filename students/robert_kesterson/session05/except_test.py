@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+# -------------------------------------------- #
+# Title: Lesson 05 Exercise: Exceptions
+# Desc: Improve your mailroom by adding exceptions and comprehensions.
+# Change log: (who, when, what)
+# RKesterson, 2019-02-06, Copied file to session05 dir
+# Note - Commit to FebUpdates branch when creating pull request this week
+# ---------------------------------------------- #
+
 """
 silly little test module that is designed to trigger Exceptions when
 run from the except_exercise.py file

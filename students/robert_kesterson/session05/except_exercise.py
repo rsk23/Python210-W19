@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+# -------------------------------------------- #
+# Title: Lesson 05 Exercise: Exceptions
+# Desc: Improve your mailroom by adding exceptions and comprehensions.
+# Change log: (who, when, what)
+# RKesterson, 2019-02-06, Copied file to session05 dir
+# Note - Commit to FebUpdates branch when creating pull request this week
+# ---------------------------------------------- #
+
 """
 An exercise in playing with Exceptions.
 Make lots of try/except blocks for fun and profit.
