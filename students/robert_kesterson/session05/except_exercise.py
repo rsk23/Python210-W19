@@ -5,6 +5,8 @@
 # Desc: Improve your mailroom by adding exceptions and comprehensions.
 # Change log: (who, when, what)
 # RKesterson, 2019-02-06, Copied file to session05 dir
+# RKesterson, 2019-02-12, Began debugging exercise
+# RKesterson, 2019-02-12, Completed debugging exercise
 # Note - Commit to FebUpdates branch when creating pull request this week
 # ---------------------------------------------- #
 
@@ -22,13 +24,19 @@ from except_test import fun, more_fun, last_fun
 # in that catch block, try again with the second item in the list
 first_try = ['spam', 'cheese', 'mr death']
 
-joke = fun(first_try[0])
+try:
+    joke = fun(first_try[0])
+except NameError as the_error:
+    joke = fun(first_try[1])
+    # print(the_error)
 
 # Here is a try/except block. Add an else that prints not_joke
 try:
     not_joke = fun(first_try[2])
 except SyntaxError:
     print('Run Away!')
+else:
+    print(not_joke)
 
 # What did that do? You can think of else in this context, as well as in
 # loops as meaning: "else if nothing went wrong"
@@ -48,4 +56,11 @@ except SyntaxError:
 
 langs = ['java', 'c', 'python']
 
-more_joke = more_fun(langs[0])
+try:
+    more_joke = more_fun(langs[0])
+except IndexError:
+    more_joke = more_fun(langs[1])
+else:
+    more_fun(langs[2])
+finally:
+    last_fun()
