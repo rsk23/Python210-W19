@@ -6,8 +6,8 @@
 # Change log: (who, when, what)
 # RKesterson, 2019-02-06, Created file
 # RKesterson, 2019-02-12, Added code from mailroompart2.py
-#
 # RKesterson, 2019-02-12, Added try / catch (try / except) blocks for user input
+#
 # RKesterson, 2019-02-12, Added comprehensions to process a sequence of items to create another sequence
 # Note - Commit to FebUpdates branch when creating pull request this week
 # ---------------------------------------------- #
@@ -33,8 +33,12 @@ def send_thank_you():
                 print("{:s}".format(i))
             tyresponse = input("Please enter a full name. List provides all names")
         else:
-            donation = input("Enter a donation amount")
-            donation = int(donation)
+            donation = input("Enter a donation amount as a whole dollar integer value.")
+            try:
+                donation = int(donation)
+            except ValueError:
+                print("Input must be an integer. Try again")
+                break
             if tyresponse in donationdict.keys():
                 donvalue = donationdict[tyresponse]
                 donvalue.append(donation)
