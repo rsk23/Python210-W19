@@ -5,9 +5,11 @@
 # Desc: Add a full suite of unit tests.
 # Change log: (who, when, what)
 # RKesterson, 2019-02-13, Created file
-# RKestesron, 2019-02-16, Realized I didn't need a separate file for unit tests lol
 # RKestesron, 2019-02-16, Copied over content from mailroompart3
-# RKestesron, 2019-02-16, Refactored code from mailroom part 3 to better support unit tests
+# RKestesron, 2019-02-16, Realized I didn't need a separate file for unit tests lol
+# RKestesron, 2019-02-16, Refactored load_donation_dict code to better support unit tests
+# RKestesron, 2019-02-16, Refactored send_thank_you to support better unit tests
+# RKestesron, 2019-02-16, Added add_donation to support better unit tests
 # ---------------------------------------------- #
 
 donationdict = {}
@@ -22,6 +24,17 @@ def load_donation_dict():
         'Theodore Roosevelt': [50, 100]
     }
     return donationdict
+
+def add_donation(donorname, dollaramount):
+    global donationdict
+    if donorname in donationdict.keys():
+        donvalue = donationdict[donorname]
+        donvalue.append(dollaramount)
+        donationdict[donorname] = donvalue
+    else:
+        donvalue = []
+        donvalue.append(dollaramount)
+        donationdict[donorname] = donvalue
 
 def send_thank_you():
     global donationdict
@@ -38,14 +51,7 @@ def send_thank_you():
             except ValueError:
                 print("Input must be an integer. Try again")
                 break
-            if tyresponse in donationdict.keys():
-                donvalue = donationdict[tyresponse]
-                donvalue.append(donation)
-                donationdict[tyresponse] = donvalue
-            else:
-                donvalue = []
-                donvalue.append(donation)
-                donationdict[tyresponse] = donvalue
+            add_donation(tyresponse, donation)
             print("Thank you {:s} for your generous donation of {:d} dollars".format(tyresponse, donation))
             break
 
@@ -118,6 +124,14 @@ if __name__ == '__main__':
 try:
     print("Beginning by checking if the dict data structure (and associated content) properly loads when initialized")
     beginDict = load_donation_dict()
-    if beginDict.keys()
+
+    if len(beginDict.keys()) == 5:
+        print("Pass - Initial data structure has the correct number of keys")
+    else:
+        print("Fail - Initial data structure does not have the expected number of keys")
+
 except Exception:
     print("{:s}".format(Exception))
+
+# Next, verify that we have the ability to add to the core data structure
+#try:
