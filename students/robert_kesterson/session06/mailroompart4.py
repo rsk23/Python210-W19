@@ -5,6 +5,7 @@
 # Desc: Add a full suite of unit tests.
 # Change log: (who, when, what)
 # RKesterson, 2019-02-13, Created file
+# RKestesron, 2019-02-16, Realized I didn't need a separate file for unit tests lol
 # RKestesron, 2019-02-16, Copied over content from mailroompart3
 # RKestesron, 2019-02-16, Refactored code from mailroom part 3 to better support unit tests
 # ---------------------------------------------- #
@@ -20,6 +21,7 @@ def load_donation_dict():
         'Simon Illyan': [100],
         'Theodore Roosevelt': [50, 100]
     }
+    return donationdict
 
 def send_thank_you():
     global donationdict
@@ -94,7 +96,7 @@ def load_selection_list():
         '4 - Quit': break_function
     }
     return switch_function_dict
-
+'''
 if __name__ == '__main__':
     switch_function_dict = load_selection_list()
     load_donation_dict()
@@ -111,3 +113,11 @@ if __name__ == '__main__':
             response = input("")
         else:
             switch_function_dict.get(response)()
+'''
+# Begin by testing the core logic needed to create the data structure that the mailroom code depends on
+try:
+    print("Beginning by checking if the dict data structure (and associated content) properly loads when initialized")
+    beginDict = load_donation_dict()
+    if beginDict.keys()
+except Exception:
+    print("{:s}".format(Exception))
