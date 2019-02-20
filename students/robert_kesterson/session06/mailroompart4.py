@@ -134,4 +134,21 @@ except Exception:
     print("{:s}".format(Exception))
 
 # Next, verify that we have the ability to add to the core data structure
-#try:
+try:
+    print("Now testing add_donation function.")
+    print("First we will verify that adding a new unqiue name should cause the dict to add a key.")
+    add_donation('Ringo Star', 25)
+    if len(beginDict.keys()) == 6:
+        print("Pass - We have successfully added a key")
+    else:
+        print("Fail - Did not add a key as expected")
+
+    print("We will now add a donation with with a previously known name. The dict should not add a key.")
+    add_donation('Winston Churchill', 25)
+    if len(beginDict.keys()) == 6:
+        print("Pass - Adding a donation for a known name did not add a new key")
+    else:
+        print("Fail - A new key was added when it should not have been")
+
+except Exception:
+    print("{:s}".format(Exception))
