@@ -8,3 +8,12 @@
 # RKestesron, 2019-02-16, Began defining unit tests
 # RKestesron, 2019-02-16, Refined unit tests
 # ---------------------------------------------- #
+
+'''
+import
+
+# Begin by testing the core logic needed to create the data structure that the mailroom code depends on
+try:
+    beginDict =
+except :
+'''
